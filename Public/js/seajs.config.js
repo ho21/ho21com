@@ -1,0 +1,1 @@
+seajs.config({base: "/Public/js/",alias: {"jquery": "jquery-1.10.2.js","public":'public.js',"artdialog":'artdialog.config'}});

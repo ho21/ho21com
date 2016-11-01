@@ -6,6 +6,7 @@ define('LIB_DIR',ROOT_PATH.'/lib/');
 define('TPL_DIR',ROOT_PATH.'/tpl/');
 define('VENDOR_PATH',ROOT_PATH.'/vendor/');
 define('DEBUG',true);
+require VENDOR_PATH.'autoload.php'; //加载composer第三方程序.
 use core\Core;
 spl_autoload_register(function($class){
 	$FilePath = ROOT_DIR.'\\'.$class;

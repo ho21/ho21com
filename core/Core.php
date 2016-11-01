@@ -4,7 +4,7 @@
  * author san_born@163.com
  **/
 namespace core;
-//use core\ext\http\Response;
+use core\ext\http\Response;
 
 class Core{
 	static $info = array();
@@ -102,10 +102,10 @@ class Core{
 			//response out put set
 			$ContentType = empty($_REQUEST['_contenttype'])?$ContentType:$_REQUEST['_contenttype'];
 			$Charset = empty($_REQUEST['_charset'])?$Charset:$_REQUEST['_charset'];
-// 			$response = new Response($return,200,array('Content-Type'=>"$ContentType;charset=$Charset"));
-// 			$response->send();
-			header("Content-type:$ContentType;charset=$Charset");
-			exit($return);
+			$response = new Response($return,200,array('Content-Type'=>"$ContentType;charset=$Charset"));
+			$response->send();
+// 			header("Content-type:$ContentType;charset=$Charset");
+// 			exit($return);
 // 		}catch (\ReflectionException $e){
 // 			DEBUG&&exit($e->getMessage());
 		}catch (\Exception $e){

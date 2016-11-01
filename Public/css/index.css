@@ -1,0 +1,99 @@
+div.container
+{
+	position:relative;
+	width:980px;margin:0 auto;margin-top:40px;
+}
+div.container div.left{width:650px;float:left;margin-top:0px;margin-left:30px;}
+ul.list{}
+ul.list li{ margin-top:10px;}
+dl{}
+dt{width:98px;float:left;}
+dt img.user-face{width:65px;float:left;border-radius:10px;box-shadow: 10px 10px 5px #888888;border:1px solid #ddd;}
+dt div.pop-triangle{height: 20px;width:13px;margin-top:25px;float:right;
+background: url('/Public/img/feed-icons.png') no-repeat scroll 0px -150px transparent;
+}
+dd{
+	margin-top:0px;
+	width:510px;
+	margin-right:10px;
+	float:right;padding:10px 15px;
+	border:1px solid #ddd;
+	box-shadow: 3px 3px 3px #888888;
+	border-radius:10px;
+	background:#fff;
+	float:right;
+}
+dd div{margin:5px 0;}
+dd div.category a{color:#ccc;}
+dd div.title a{font-size:20px;}
+dd div.content a img{border:none;width:100%;}
+dd div.bottom{color:#91B4D1;}
+dd div.bottom div.tags {width:300px;height:20px;overflow:hidden;float:left;margin:0;}
+dd div.bottom div.tags a{ border-radius:3px;background:#91B4D1;padding:3px;margin-right:3px;display:block;float:left;color:#fff;}
+dd div.bottom div.tags a:hover{ }
+dd div.bottom div.operate{display:block;float:right;color:#666;height:20px;margin:0;}
+dd div.bottom div.operate a{color:#666;padding:3px 0;margin-left:3px;display:block;float:left;}
+dd div.bottom div.operate a:hover{color:#91B4D1;}
+
+div.page{
+	margin-top:20px;
+	padding:15px 0;
+}
+div.page a{
+	display:block;
+	height:35px;
+	line-height:30px;
+	text-align:center;
+	float:right;
+	margin-right:10px;
+	color:#999;
+}
+div.page a span.left{
+		display:block;
+		float:left;
+		width:5px;
+		height:100%;
+		overflow:hidden;
+		font-size:0;
+		background: url('/Public/img/button-bg.png') no-repeat scroll left 0px transparent;
+		}
+div.page a span.middle{
+	display:block;
+	float:left;
+	width:100px;
+	height:100%;
+	background: url('/Public/img/button-bg.png') no-repeat scroll center 0px transparent;
+	}
+div.page a span.right{
+	display:block;
+	float:left;
+	width:5px;
+	height:100%;
+	overflow:hidden;
+	font-size:0;background: url('/Public/img/button-bg.png') no-repeat scroll right 0px transparent;
+	}
+div.page a:hover span.left{
+	background: url('/Public/img/button-bg.png') no-repeat scroll left -50px transparent;
+	}
+
+div.page a:hover span.middle{
+	background: url('/Public/img/button-bg.png') no-repeat scroll center -50px transparent;
+	}
+div.page a:hover span.right{
+	background: url('/Public/img/button-bg.png') no-repeat scroll right -50px transparent;	
+	}
+div.container div.right{
+	position:relative;
+	width:280px;
+	float:right;
+}
+div.tags ul{border:1px solid #ddd;border-bottom:none;box-shadow: 3px 3px 3px #888888;border-radius:10px;background:#fff;}
+div.tags ul li {border-bottom:1px solid #ddd;border-radius:10px;}
+div.tags ul li a{height:25px;line-height:25px;display:block;padding:5px 0;font-family: Tahoma,Arial,Helvetica,STHeiti;}
+div.tags ul li a span.tags-bg{
+	display:block;
+	width:30px;height:25px;
+	float:left;
+	background: url('/Public/img/sidemenu-item.png') repeat scroll -95px 5px transparent;}
+div.tags ul li a:hover {border-radius:10px;background:#fff;}
+div.tags ul li a:hover span.tags-bg{ background: url('/Public/img/sidemenu-item.png') repeat scroll -95px -45px transparent; }

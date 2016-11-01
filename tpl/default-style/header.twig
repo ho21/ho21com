@@ -1,0 +1,6 @@
+<div class="nav">
+<img src="/Public/img/logo.png" alt="ho21.com" title="ho21.com" align="bottom">
+{% for vo in navigaction %}
+    <a {% if vo.category_id == id %} class="focus" {% endif %} href="/index.php/index/list/{{  vo.category_id }}" title="{{ vo.category_description }}" alt="{{ vo.category_description }}">{{ vo.category_title }}</a>
+{% endfor %}
+</div>

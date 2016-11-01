@@ -1,0 +1,12 @@
+<a href="javascript:;" onclick="toQzoneLogin()"><img src="/Public/img/qq_login.png" style="width:250px;margin-top:10px;border:none;"></a>
+<script type="text/javascript">
+var childWindow;
+function toQzoneLogin()
+{
+ childWindow = window.open("/Public/demos/QQlogin/example/oauth/index.php","TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+} 
+function closeChildWindow()
+{
+ childWindow.close();
+}
+</script>

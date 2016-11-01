@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>发现快乐,共享快乐Share the fun - HO21.COM</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN">
+<meta HTTP-EQUIV="expires" CONTENT="86400">
+<meta content="网络收集上,及网友分享各种搞笑图片,搞笑GIF,动态搞笑图,奇趣图片,视觉图片,恐怖图片,恶心图片,妹子图片,福利图片,笑话图片,笑话,冷笑话,笑话大全,内涵段子,爆笑笑话,等等" name="keywords">
+<meta content="HO21是最火爆的搞笑图片、搞笑视频分享社区，在这里你可以分享经典笑话、搞笑笑话、爆笑笑话、冷笑话、笑话大全、内涵笑话、幽默笑话、gif动态图片、神吐槽、神语音、搞笑图集、搞笑猎奇、笑话吧，分享每一份快乐." name="description">
+<meta name="author" content="ho21.com" />
+<meta property="qc:admins" content="1451644417607216375" />
+<link rel="shortcut icon" href="/Public/img/favicon.ico" type="image/x-icon" />
+<link rel=stylesheet type=text/css href="/Public/css/common.css" />
+<link rel=stylesheet type=text/css href="/Public/css/index.css" />
+<script src="/Public/js/sea-2.2.1.js" id="seajsnode"></script>
+<script src="/Public/js/seajs.config.js"></script>
+</head>
+<body>
+<div class="header">{%autoescape false%}{{ header_block }}{% endautoescape  %}</div>
+<div class="container">
+<div class="left">
+<div class="left-list">
+{{ include('list.twig', {'list': list}) }}
+<script> 
+seajs.use(['jquery','artDialog.seajs'],function(){
+var obj = {};	 
+	obj.page = {{ p }}
+	obj.cid  = {{ id }}
+	obj.img = new Image(); //建立图像对象
+	obj.img.listnum = 10; //每页显示的数量.
+	obj.img.num =0; //已经加载的数量,当加载15个图片是自动加载下一页的图片.
+	obj.img.errfaceimg = "/Public/img/face.jpg";//装头像载错误的图片.
+	obj.img.errimg = "/Public/img/err.png";//装载错误的图片
+	obj.img.loadimg = "/Public/img/loading-small.gif"; //加载中的图片
+	$("div.left-list").each(function(){	
+		//预加载下一页的图片.考虑到服务器的流量问题,还是注释掉算了.
+		//$.get('list.php',{'page':(obj.page+1),'cid':obj.cid},function(data){ this.src = $(data).find('dd div.content img').attr('src'); });
+		//每页显示的数量
+		//obj.img.listnum = $(this).find('ul.list li').size();
+		//alert(obj.img.listnum)
+		//当表情图片加载失败时.
+		$(this).find('dt img').each(function(){ this.onerror=function(){ this.src = obj.errfaceimg;  }})
+		//循环图片,尼玛改了好几次了.
+		$(this).find('dd img').each(function(){
+			//建立图片对象。
+			var img = new Image();
+				  img.self = $(this);
+				  img.parent = img.self.parent('div.middle');
+				  img.src = img.self.attr('src');
+			//图像加载失败.
+		    img.onerror=function(){ img.selfattr('src',obj.img.errimg); }
+			//加载完成后
+			//img.onload = function(){ if(img.width < img.parent.width()) img.self.css('width','auto').hide().fadeIn(); }
+		/* 旧文件.
+		//alert($(this).attr('src')+'-'+img.width+'-'+$(this).width()+'<'+$(this).parent('div.middle').width())
+		//图像加载失败.
+		//img.onerror=function(){ $(this).attr('src',obj.img.errimg); }
+		//JQ图像加载完毕.
+		$(this).load(function(){
+		$(this).hide().fadeIn();
+		if(slef.img.width<$(this).parent('div.middle').width()) $(this).css('width',slef.img.width+'px');
+		//if($(this).width()<$(this).parent('div.middle').width()) $(this).css('width','auto');
+		//预加载下一页
+		//obj.img.num++;				
+		//if(obj.img.num > obj.img.listnum - 2) $.get('list.php',{'page':(obj.page+1),'cid':obj.cid},function(data){ this.src = $(data).find('dd img').attr('src'); });
+		//alert(obj.img.num)
+		})
+			*/
+		//alert($(this).attr('src')+'-'+obj.img.width+'-'+$(this).width()+'<'+$(this).parent('div.middle').width())
+		/*图像加载完毕.
+		this.onload =function(){ 
+		$(this).hide().fadeIn().parent('div.content').css('background','none');
+		if($(this).width()>$(this).parent('div.content').width()) $(this).css('width','100%');
+		obj.img.num++;
+		if(obj.img.num > obj.img.listnum - 2) $.get('list.php',{'page':++obj.page,'cid':obj.cid},function(data){ this.src = $(data).find('dd div.content img').attr('src'); });
+		})
+		}
+		*/
+		//return false;
+		})
+		
+		//alert($(this).find('li').size())
+		
+		//显示上一页和下一页.
+		if($(this).find('li').size()>0)
+		{
+			//当第一页时隐藏下一页
+			if(obj.page<=1){ $("a.prevpage").hide(); }else{ $("a.prevpage").fadeIn(); }
+			//当结果返回大obj.img.listnum时显示下一页
+			if($(this).find('li').size() < obj.img.listnum){ $("a.nextpage").hide(); }else{ $("a.nextpage").fadeIn(); }
+		}
+		else
+		{
+			$("a.prevpage,a.nextpage").hide();
+			$(this).html('<center><h1>所有数据已加载完.</h1></center>')
+		}
+		
+	//赞,踩,老图
+	$('a.operate').click(function(){
+		var operate = dialog({ id:'operate',fixed: true,content:'<img src="/Public/img/loading_27.gif" align="absmiddle" width=15> 操作中..'}).show();
+		var self = $(this);
+			self.operate = self.attr('name');
+			self.id = self.attr('data-data');
+			if(isNaN(self.id)==true)
+			{
+				operate.content('错误参数').show();
+				setTimeout(function () {operate.close().remove(); },3000);
+				return false;
+			}
+		$.get('/ajax.php?action=operate',{'id':self.id,'do':self.operate},function(data){ 
+			if(data.status==1) self.find('span').html(data.data);
+			operate.content(data.info).show();
+			setTimeout(function () {operate.close().remove(); },3000);
+		},'json')
+	})
+  })
+
+})
+</script>
+</div>
+
+<div class="page">
+<a href="/index.php/index/index/{{ id }}/{{ p+1 }}" class="nextpage"><span class="left">&nbsp;</span><span class="middle">下一页</span><span class="right">&nbsp;</span></a>
+<a href="/index.php/index/index/{{ id }}/{{ p-1 }}" class="prevpage"><span class="left">&nbsp;</span><span class="middle">上一页</span><span class="right">&nbsp;</span></a>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="clear">&nbsp;</div>
+<div class="links">
+{# <script type="text/javascript" src="http://links.webscan.360.cn"></script>#}
+</div>
+</div>
+<div class="right">&nbsp;
+<div class="top">
+{{ include('tags.twig') }}
+{{ include('login.twig') }}
+</div>
+<div class="footer">
+{{ include('footer.twig', {'browse': browse}) }}
+</div>
+</div>
+<div class="clear">&nbsp;</div>
+</div>
+</body>
+</html>

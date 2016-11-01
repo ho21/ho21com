@@ -1,0 +1,78 @@
+<ul class="list">
+{% for vo in list.data %}
+<li>
+<dl>
+<dt>
+<img src="/Public/img/face.jpg" align="top" class="user-face">
+<div class="pop-triangle"></div>
+</dt>
+<dd>
+<div class="category"><a href="/index.php/index/list/{{ vo.category_id }}">{{ vo.category_title }}</a></div>
+<div class="title">
+<a href="javascript:;" title="{{ vo.images_title }}" alt="{{ vo.images_title }}">{{ vo.images_title }}</a>
+</div>
+<div class="content">
+<a href="javascript:;" title="{{ vo.images_title?vo.images_title~",":'' }}{{ vo.category_title }},ho21" alt="{{ vo.images_title?vo.images_title~",":'' }}{{ vo.category_title }},ho21">
+<img width='100%' src="{{ vo.images_url }}" alt="{{ vo.images_title?vo.images_title~",":'' }}{{ vo.category_title }},ho21" title="{{ vo.images_title?vo.images_title~",":'' }}{{ vo.category_title }},ho21"/>
+</a>
+</div>
+<div class="bottom">
+<div class="tags">
+{% if vo.images_tags %}
+{% set tags = vo.images_tags|split(' ') %}
+{% for tag in tags|slice(0, 5) %}
+<a href="/search.php?word={{ tag }}" alt="" title="">#{{ tag|slice(0, 2) }} </a>
+{% endfor %}
+{% endif %}
+
+
+
+</div>
+<div class="operate">
+<a class="operate" name="is_good" data-data="{{ vo.images_id }}" href="javascript:;">顶[<span>{{ vo.is_good }}</span>]</a> 
+<a class="operate" name="is_bad" data-data="{{ vo.images_id }}" href="javascript:;">踩[<span>{{ vo.is_bad }}</span>]</a>  
+<a class="operate" name="is_old" data-data="{{ vo.images_id }}" href="javascript:;">老图[<span>{{ vo.is_old }}</span>]</a> 
+<a href="javascript:;">评论[{{ vo.is_old }}]</a>
+</div>
+<div class="clear">&nbsp;</div>
+</div>
+</dd>
+</dl>
+<div class="clear">&nbsp;</div>
+</li>
+{% endfor %}
+</ul>
+
+
+
+
+
+
+
+
+
+
+<ul class="list">
+{% for vo in list.data %}
+<li>
+<dl>
+<dt>
+<img src="/Public/img/face.jpg" align="top" class="user-face">
+<div class="pop-triangle"></div>
+</dt>
+<dd>
+<div class="top">搞笑Fun</div>
+<div class="middle">
+<?php echo $val['images_title'];?>
+{{ vo.images_title }}
+<img src="{{ vo.images_url }}" width="100%"/>
+</div>
+<div class="bottom">&nbsp;</div>
+</dd>
+</dl>
+<div class="clear">&nbsp;</div>
+</li>
+{% endfor %}
+</ul>
+<div class="bdsharebuttonbox" style="display:none;"><a href="javascript:;" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="javascript:;" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="javascript:;" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="javascript:;" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="javascript:;" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="javascript:;" class="bds_weixin" data-cmd="weixin"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
